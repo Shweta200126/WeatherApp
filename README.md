@@ -14,6 +14,7 @@ OpenWeather API
 - [X] Responsive
 - [X] Takes in input of City and Zip code
 - [X] Shows today's weather in a minimalistic UI
+- [X] Error handling
 
 **Features to be added in progress:**
 - [ ] AutoComplete for cities
