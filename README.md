@@ -16,6 +16,6 @@ OpenWeather API
 - [X] Shows today's weather in a minimalistic UI
 
 **Features to be added in progress:**
-- [] AutoComplete for cities
-- [] Weather Forecast
-- [] Data Visualization 
+- [ ] AutoComplete for cities
+- [ ] Weather Forecast
+- [ ] Data Visualization 
