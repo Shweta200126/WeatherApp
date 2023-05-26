@@ -3,10 +3,12 @@
 **Deployed link:** https://weatherapp-react-tw.netlify.app/
 
 Best viewed at 75% in web view.
-Tech stack: 
+
+**Tech stack:** 
 React JS and Tailwind CSS
 
-API: OpenWeather API
+**API:** 
+OpenWeather API
 
 Features:
 - [X] Responsive
