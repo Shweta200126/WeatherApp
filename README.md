@@ -1,4 +1,4 @@
-# weather-app-starter
+# weather-app
 
 **Deployed link:** https://weatherapp-react-tw.netlify.app/
 
