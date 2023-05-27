@@ -225,7 +225,7 @@ const WeatherApp = () => {
     </form>
 
     {/* card */}
-    <div className='w-full max-w-[450px] bg-[#DBABBE] min-h-[612px] 
+    <div className='w-full max-w-[450px] bg-[#DBABBE] min-h-[600px] 
       text-[#372549] backdrop-blur-[32px] rounded-[32px] py-12 px-6'>
         {loading ? (
           <div className='w-full h-full flex justify-center items-center'>
@@ -276,13 +276,14 @@ const WeatherApp = () => {
         </div>
 
         {/* card bottom */}
-        <div className='max-w-[378px] mx-auto flex flex-col gap-y-6'>
+        <div className='max-w-[378px] mx-auto flex
+            flex-col gap-y-6'>
 
           <div className='flex justify-between'>
             <div className='flex items-center gap-x-2'>
                 {/* icon */}
                 <div className='text-[20px]'>
-                  <BsEye /> 
+                  <BsEye />  
                 </div>
                 <div className='flex'>
                   Visibility 
@@ -292,7 +293,7 @@ const WeatherApp = () => {
             <div className='flex items-center gap-x-2'>
             {/* icon */}
             <div className='text-[20px] font-bold'>
-              <BsThermometer /> 
+            <BsThermometer />
                 </div>
                 <div>
                   Feels like
