@@ -17,8 +17,13 @@ import {
   BsEye, 
   BsWater, 
   BsThermometer, 
-  BsWind
+  BsWind,
 } from 'react-icons/bs';
+
+import {
+  TbSunrise,
+  TbSunset
+} from "react-icons/tb";
 
 import {ImSpinner8} from 'react-icons/im';
 
@@ -139,6 +144,28 @@ const WeatherApp = () => {
   // date object
   const date = new Date();
 
+  const sunrise = new Date(data.sys.sunrise * 1000);
+
+  const localSunrise = sunrise.toLocaleString("en-US", {
+    hour12: false,
+    timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+  },
+  );
+  
+  const sunriseTime = localSunrise.slice(11, 16);
+  
+  const sunset = new Date(data.sys.sunset * 1000);
+
+  const localSunset = sunset.toLocaleString("en-US", {
+    hour12: false,
+    timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+  },
+  );
+  
+  const sunsetTime = localSunset.slice(11, 16);
+
+
+
   async function Fetcher(url) {
     const res = await fetch(url);
   
@@ -172,6 +199,7 @@ const WeatherApp = () => {
   return(
     <div>
     <Navbar />
+
     <div className='w-full h-screen bg-[#EDD2E0] bg-no-repeat bg-cover bg-center flex flex-col items-center justify-center px-4 lg:px-0'>
     {errorMsg && <div className='w-full max-w-[90vw] lg:max-w-[450px]
     bg-[#000000] text-white absolute top-2 lg:top-10 p-4 capitalize rounded-md'>
@@ -197,7 +225,7 @@ const WeatherApp = () => {
     </form>
 
     {/* card */}
-    <div className='w-full max-w-[450px] bg-[#DBABBE] min-h-[584px] 
+    <div className='w-full max-w-[450px] bg-[#DBABBE] min-h-[612px] 
       text-[#372549] backdrop-blur-[32px] rounded-[32px] py-12 px-6'>
         {loading ? (
           <div className='w-full h-full flex justify-center items-center'>
@@ -248,48 +276,43 @@ const WeatherApp = () => {
         </div>
 
         {/* card bottom */}
-        <div className='max-w-[378px] mx-auto flex
-            flex-col gap-y-6'>
+        <div className='max-w-[378px] mx-auto flex flex-col gap-y-6'>
+
           <div className='flex justify-between'>
             <div className='flex items-center gap-x-2'>
-
-              {/* icon */}
-                <div className='text-[20px] font-bold'>
+                {/* icon */}
+                <div className='text-[20px]'>
                   <BsEye /> 
                 </div>
-                <div>
-                  Visibility 
-                  <span className='ml-2'>{data.visibility/1000} km</span>
-                </div>
-            </div>
-
-            <div className='flex items-center gap-x-2'>
-
-              {/* icon */}
-                <div className='text-[20px]'>
-                  <BsThermometer /> 
-                </div>
                 <div className='flex'>
+                  Visibility 
+                  <div className='ml-2'>{data.visibility/1000} km</div>
+                </div>
+            </div>  
+            <div className='flex items-center gap-x-2'>
+            {/* icon */}
+            <div className='text-[20px] font-bold'>
+              <BsThermometer /> 
+                </div>
+                <div>
                   Feels like
-                  <div className='flex ml-2'>{parseInt(data.main.feels_like)}</div>°C
+                  <span className='ml-2'>{parseInt(data.main.feels_like)}°C</span>
                 </div>
             </div>
           </div>
 
           <div className='flex justify-between'>
             <div className='flex items-center gap-x-2'>
-
               {/* icon */}
                 <div className='text-[20px]'>
                   <BsWater /> 
                 </div>
                 <div>
                   Humidity 
-                  <span className='ml-2'>{data.main.humidity} %</span>
+                  <span className='ml-2'>{data.main.humidity}%</span>
                 </div>
             </div>
             <div className='flex items-center gap-x-2'>
-
               {/* icon */}
                 <div className='text-[20px]'>
                   <BsWind /> 
@@ -300,8 +323,34 @@ const WeatherApp = () => {
                 </div>
             </div>
           </div>
+
+          {/* Sunrise, Sunset */}
+          <div className='flex justify-between'>
+            <div className='flex items-center gap-x-2'>
+              {/* icon */}
+                <div className='text-[20px]'>
+                  <TbSunrise />  
+                </div>
+                <div className='flex'>
+                  Sunrise 
+                  <span className='ml-2'>{sunriseTime} AM</span>
+                </div>
+            </div>
+
+            <div className='flex items-center gap-x-2'>
+              {/* icon */}
+                <div className='text-[20px]'>
+                  <TbSunset />  
+                </div>
+                <div className='flex'>
+                  Sunset 
+                  <span className='ml-2'>{sunsetTime} PM</span>
+                </div>
+            </div>
+          </div>
+
+          </div>
         </div>
-      </div>
       )}
     </div>
   </div>
