@@ -143,8 +143,8 @@ const WeatherApp = () => {
 
   // date object
   const date = new Date();
-
-  const sunrise = new Date(data.sys.sunrise * 1000);
+        
+   const sunrise = new Date(data.sys.sunrise * 1000);
 
   const localSunrise = sunrise.toLocaleString("en-US", {
     hour12: false,
@@ -324,7 +324,7 @@ const WeatherApp = () => {
                 </div>
             </div>
           </div>
-
+          
           {/* Sunrise, Sunset */}
           <div className='flex justify-between'>
             <div className='flex items-center gap-x-2'>
@@ -349,9 +349,9 @@ const WeatherApp = () => {
                 </div>
             </div>
           </div>
-
-          </div>
+          
         </div>
+      </div>
       )}
     </div>
   </div>
