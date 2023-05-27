@@ -138,26 +138,6 @@ const WeatherApp = () => {
 
   // date object
   const date = new Date();
-        
-   const sunrise = new Date(data.sys.sunrise * 1000);
-
-  const localSunrise = sunrise.toLocaleString("en-US", {
-    hour12: false,
-    timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-  },
-  );
-  
-  const sunriseTime = localSunrise.slice(11, 16);
-  
-  const sunset = new Date(data.sys.sunset * 1000);
-
-  const localSunset = sunset.toLocaleString("en-US", {
-    hour12: false,
-    timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-  },
-  );
-  
-  const sunsetTime = localSunset.slice(11, 16);
 
   async function Fetcher(url) {
     const res = await fetch(url);
@@ -319,33 +299,7 @@ const WeatherApp = () => {
                   <span className='ml-2'>{data.wind.speed} m/s</span>
                 </div>
             </div>
-          </div>
-          
-          {/* Sunrise, Sunset */}
-          <div className='flex justify-between'>
-            <div className='flex items-center gap-x-2'>
-              {/* icon */}
-                <div className='text-[20px]'>
-                  <TbSunrise />  
-                </div>
-                <div className='flex'>
-                  Sunrise 
-                  <span className='ml-2'>{sunriseTime} AM</span>
-                </div>
-            </div>
-
-            <div className='flex items-center gap-x-2'>
-              {/* icon */}
-                <div className='text-[20px]'>
-                  <TbSunset />  
-                </div>
-                <div className='flex'>
-                  Sunset 
-                  <span className='ml-2'>{sunsetTime} PM</span>
-                </div>
-            </div>
-          </div>
-          
+          </div>          
         </div>
       </div>
       )}
