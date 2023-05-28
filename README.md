@@ -18,5 +18,6 @@ OpenWeather API
 
 **Features to be added in progress:**
 - [ ] AutoComplete for cities
+- [ ] Dark Mode
 - [ ] Weather Forecast
 - [ ] Data Visualization 
