@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import Navbar from './Navbar';
+import Footer from './Footer';
 
 import axios from 'axios';
 
@@ -157,12 +158,12 @@ const WeatherApp = () => {
   const sunset = new Date(data.sys.sunset * 1000);
 
   const localSunset = sunset.toLocaleString("en-US", {
-    hour12: false,
+    hour12: true,
     timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
   },
   );
   
-  const sunsetTime = localSunset.slice(11, 16);
+  const sunsetTime = localSunset.slice(11, 15);
 
 
 
@@ -355,6 +356,7 @@ const WeatherApp = () => {
       )}
     </div>
   </div>
+  <Footer />
   </div> 
   );
 };
