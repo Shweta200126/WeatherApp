@@ -153,12 +153,12 @@ const WeatherApp = () => {
   },
   );
   
-  const sunriseTime = localSunrise.slice(11, 16);
+  const sunriseTime = localSunrise.slice(11, 15);
   
   const sunset = new Date(data.sys.sunset * 1000);
 
   const localSunset = sunset.toLocaleString("en-US", {
-    hour12: true,
+    hour12: false,
     timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
   },
   );
