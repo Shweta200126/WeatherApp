@@ -360,7 +360,7 @@ const WeatherApp = () => {
       )}
     </div>
   </div>
-  <Footer />
+    <Footer/>
   </div> 
   );
 };

@@ -5,7 +5,9 @@ module.exports = {
       primary: 'Poppins',
     },
     extend: {
-      
+        colors: {
+          primary: '#EDD2E0', // your desired color
+        },      
       keyframes: {
         shake: {
           '0%': {
