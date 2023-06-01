@@ -9,7 +9,7 @@ import {IoMdSunny,
         IoMdCloudy, 
         IoMdSnow, 
         IoMdThunderstorm, 
-        IoMdSearch
+        IoMdSearch,
       } from 'react-icons/io';
 
 import {
@@ -19,6 +19,7 @@ import {
   BsWater, 
   BsThermometer, 
   BsWind,
+  BsCloudFog2Fill
 } from 'react-icons/bs';
 
 import {
@@ -139,13 +140,15 @@ const WeatherApp = () => {
       break;
     case 'Thunderstorm':
       icon = <IoMdThunderstorm />;
+    case 'Fog':
+      icon = <BsCloudFog2Fill/>;
       break;
   }
 
   // date object
   const date = new Date();
         
-   const sunrise = new Date(data.sys.sunrise * 1000);
+  const sunrise = new Date(data.sys.sunrise * 1000);
 
   const localSunrise = sunrise.toLocaleString("en-US", {
     hour12: false,
@@ -198,10 +201,10 @@ const WeatherApp = () => {
   }
 
   return(
-    <div>
+    <div className='grid gap-10'>
     <Navbar />
 
-    <div className='w-full h-screen bg-[#EDD2E0] bg-no-repeat bg-cover bg-center flex flex-col items-center justify-center px-4 lg:px-0'>
+    <div className='flex flex-col items-center justify-center px-4 lg:px-0'>
     {errorMsg && <div className='w-full max-w-[90vw] lg:max-w-[450px]
     bg-[#000000] text-white absolute top-2 lg:top-10 p-4 capitalize rounded-md'>
       {`${errorMsg.response.data.message}`}</div>}
@@ -209,10 +212,10 @@ const WeatherApp = () => {
     {/* form */}
     <form className={`${animate ? 'animate-shake' : 'animate-none'} h-16 bg-[#DBABBE] w-full max-w-[450px]
     rounded-full backdrop-blur-[32px] mb-8 text-[#372549]`}>
-      <div className='h-full relative flex items-center justify-between p-2'>
+      <div className='search-bar h-full relative flex items-center justify-between p-2' display='flex'>
         <input onChange={(e) => handleInput(e)}
           className='flex-1 bg-transparent outline-none
-          placeholder:text-[#7A52A3] text-[#372549] text-[20px]
+          placeholder:text-[#7A52A3] text-[#372549] text-[16px]
           font-normal pl-6 h-full' 
           type="text" 
           placeholder='Search by city or country' 
@@ -224,6 +227,7 @@ const WeatherApp = () => {
         </button>
       </div>
     </form>
+
 
     {/* card */}
     <div className='w-full max-w-[450px] bg-[#DBABBE] min-h-[600px] 
@@ -241,7 +245,7 @@ const WeatherApp = () => {
           <div className='text-[87px]'>{icon}</div>
           <div>
 
-          {/* country name */}
+          {/* city, country name */}
           <div className='text-2xl font-semibold'>
             {data.name}, {data.sys.country}
           </div>
@@ -278,7 +282,7 @@ const WeatherApp = () => {
 
         {/* card bottom */}
         <div className='max-w-[378px] mx-auto flex
-            flex-col gap-y-6'>
+            flex-col gap-y-4'>
 
           <div className='flex justify-between'>
             <div className='flex items-center gap-x-2'>
@@ -321,7 +325,7 @@ const WeatherApp = () => {
                 </div>
                 <div className='flex'>
                   Wind 
-                  <span className='ml-2'>{data.wind.speed} m/s</span>
+                  <span className='ml-2'>{parseInt(3.6*(data.wind.speed))} km/h</span>
                 </div>
             </div>
           </div>
