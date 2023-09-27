@@ -2,6 +2,9 @@
 
 **Deployed link:** https://weatherapp-react-tw.netlify.app/
 
+![image](https://github.com/Shweta200126/WeatherApp/assets/72426535/462cc4e6-91d5-43ae-93ae-0d19114dbc0a)
+
+
 Best viewed at 75% in web view.
 
 **Tech stack:** 
